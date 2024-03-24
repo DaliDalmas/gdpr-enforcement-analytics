@@ -1,5 +1,6 @@
 import pandas as pd
 from sqlalchemy import create_engine
+import numpy as np
 engine = create_engine('postgresql://gdpr:gdpr@localhost:5432/gdpr')
 
 
@@ -9,7 +10,7 @@ def clean_fine(fine):
     if 'four-digit' in fine:
         return 1000
     elif ('unknown' in fine )or ('only intention' in fine):
-        return -1
+        return np.nan
     elif 'between' in fine:
         return fine.split()[-1]
     elif 'five-digit' in fine:
@@ -21,8 +22,12 @@ def clean_fine(fine):
     return fine
 
 def clean_date(decision_date):
-    if '-' not in decision_date:
+    if 'unknown' in decision_date:
+        return np.nan
+    elif '-' not in decision_date:
         return decision_date+'-01-01'
+    elif len(decision_date.split('-'))==2:
+        return decision_date+'-01'
     return decision_date
 
 
@@ -33,6 +38,7 @@ def cleaner():
     data.columns = [col.replace(" ", '_').replace('/', '_or_') for col in data.columns]
     data['fine_type'] = data['type']
     del data['type']
+    data.dropna(inplace=True)
     data.to_sql('clean_gdpr', engine, if_exists='replace',index=False)
 
 
