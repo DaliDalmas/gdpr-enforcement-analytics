@@ -29,12 +29,13 @@ function App() {
       'http://127.0.0.1:8000/fines/?skip=0&limit=5000'
     ).then(dataset => {
       dataset = dataset.map(rowConverter)
-      dataset = dataset.sort((a,b)=>a.date-b.date)
+      dataset = dataset.sort((a,b)=> new Date(b.date) - new Date(a.date))
       setData(dataset)
     })
   }, [])
   return (
     <div className="App">
+
       {data? <Home data={data}/>: <></>}
     </div>
   );
