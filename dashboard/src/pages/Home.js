@@ -1,9 +1,11 @@
 import TimeSeries from "../components/TimeSeries"
 export default function Home({data}){
     let timeSeriesData = {}
+    let cummulativeFine = 0
     data.reduce((accumulator, currentValue)=>{
         const currentDate = currentValue['date']
         const currentFine = currentValue['fine']
+        cummulativeFine = cummulativeFine + currentFine
         if (!accumulator[currentDate]){
             accumulator[currentDate] = currentFine
         }else{
@@ -22,6 +24,7 @@ export default function Home({data}){
                 width = {1000}
                 height = {500}
                 title = "GDPR FINES PER DAY"
+                yAxisLabel = "sum of fines in a day (£)"
                 />
         </div>
     )
