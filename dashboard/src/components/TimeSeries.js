@@ -58,6 +58,7 @@ export default function TimeSeries({data, width, height, title, yAxisLabel}){
         const lineGenerator = d3.line()
                                 .x(d=>xScale(new Date(d.date)))
                                 .y(d=>yScale(d.value))
+        lineGenerator.curve(d3.curveStep)
         drawingCanvas.append("path")
                         .attr("d", lineGenerator(data))
                         .attr("fill", "none")
