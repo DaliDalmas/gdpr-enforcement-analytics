@@ -38,3 +38,32 @@
     transform: rotate(360deg);
   }
 }
+
+
+.slider {
+  -webkit-appearance: none; /* Override default appearance */
+  width: 100%; /* Set width to fill container */
+  height: 25px; /* Set height for the slider */
+  background: #ff34aa; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency */
+  -webkit-transition: .2s; /* Add transition for smoother slide */
+  transition: opacity .2s;
+  something: #ffb8e1
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default appearance */
+  appearance: none;
+  width: 25px; /* Set width of slider thumb */
+  height: 25px; /* Set height of slider thumb */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Set cursor to pointer */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set width of slider thumb */
+  height: 25px; /* Set height of slider thumb */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Set cursor to pointer */
+}

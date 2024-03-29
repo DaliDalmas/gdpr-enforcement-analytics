@@ -55,7 +55,7 @@ export default function BarChart({data, width, height, title}){
                         .attr('height', 20)
                         .attr('x', 2)
                         .attr('y', d=>yScale(d.label))
-                        .style('fill', 'pink')
+                        .style('fill', '#FF36AB')
                         .style('stroke', 'purple')
 
     },[data,  width, height, title])

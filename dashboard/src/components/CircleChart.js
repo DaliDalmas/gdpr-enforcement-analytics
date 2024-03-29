@@ -10,7 +10,7 @@ export default function CircleChart({data, width, height}){
             .attr('height', height)
             .style('outline', '1px solid purple')
 
-        const margin = {top: 30, right: 40, bottom: 30, left: 40}
+        const margin = {top: 20, right: 40, bottom: 30, left: 40}
         const innerHeight = height - margin.top - margin.bottom
         const innerWidth = width - margin.left - margin.right
 
@@ -29,7 +29,7 @@ export default function CircleChart({data, width, height}){
                         .attr('r', radiusScale(datum.value))
                         .attr('cx', 0)
                         .attr('cy', 0)
-                        .style('fill', 'pink')
+                        .style('fill', '#FF36AB')
                         .style('stroke', 'purple')
                     d3.select(this)
                         .append('text')

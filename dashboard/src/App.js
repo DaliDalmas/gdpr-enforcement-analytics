@@ -49,35 +49,54 @@ function App() {
 
 
   useEffect(() => {
-    if (data){
+    if (data) {
       setdf(data.filter(d => d.fine <= maxFine))
     }
-  }, [maxFine,data])
+  }, [maxFine, data])
 
+  let maximumFine = 0
+  let minimunFine = 0
+  let averageFine = 0
+  let medianFina = 0
+  if(data){
+    maximumFine = d3.max(df, d=>d.fine)
+    minimunFine = d3.min(df, d=>d.fine)
+    averageFine = d3.mean(df, d=>d.fine)
+    medianFina = d3.median(df, d=>d.fine)
+  }
 
   return (
     <div className="App">
-
+      <h1 className='text-4xl font-helvetica font-bold'>GDPR ENFORCEMENT DASHBOARD</h1>
+      <div className='flex justify-center items-center space-x-20 mt-6 mb-6'>
+        <div className='flex justify-center items-center flex-col height-40 bg-[#ffb8e1]	w-48 h-24 rounded-lg'>
+          <span className='text-xl font-bold font-helvetica'>MAXIMUM FINE</span>
+          <span>{maximumFine}</span>
+        </div>
+        <div className='flex justify-center items-center flex-col height-40 bg-[#ffb8e1]	w-48 h-24 rounded-lg'>
+          <span className='text-xl font-bold font-helvetica'>AVERAGE FINE</span>
+          <span>{averageFine}</span>
+        </div>
+        <div className='flex justify-center items-center flex-col height-40 bg-[#ffb8e1]	w-48 h-24 rounded-lg'>
+          <span className='text-xl font-bold font-helvetica'>MINIMUM FINE</span>
+          <span>{minimunFine}</span>
+        </div>
+        <div className='flex justify-center items-center flex-col height-40 bg-[#ffb8e1]	w-48 h-24 rounded-lg'>
+          <span className='text-xl font-bold font-helvetica'>MEDIAN FINE</span>
+          <span>{medianFina}</span>
+        </div>
+      </div>
+      
       <input type="range"
-              name="mySlider"
-              id="mySlider"
-              min={1000}
-              max={50000000} 
-              size={100}
-              style={{ width: '1000px' }} ></input>
-      <span>{maxFine}</span>
-      <div>
-        MAXIMUM FINE
-      </div>
-      <div>
-        AVERAGE FINE
-      </div>
-      <div>
-        MINIMUM FINE
-      </div>
-      <div>
-        MEDIAN FINE
-      </div>
+        className='mb-6 slider'
+        name="mySlider"
+        id="mySlider"
+        min={1000}
+        max={50000000}
+        size={100}
+        style={{ width: '1040px' }} ></input>
+      
+
       {data ? <Home data={df} /> : <></>}
     </div>
   );

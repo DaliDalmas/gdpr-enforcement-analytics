@@ -62,7 +62,7 @@ export default function TimeSeries({data, width, height, title, yAxisLabel}){
         drawingCanvas.append("path")
                         .attr("d", lineGenerator(data))
                         .attr("fill", "none")
-                        .attr("stroke", "purple")
+                        .attr("stroke", "#FF36AB")
                         .attr("stroke-width", 2)
         
         svg.append("text")
@@ -72,7 +72,7 @@ export default function TimeSeries({data, width, height, title, yAxisLabel}){
             .text("date")
             .attr("transform", `translate(${innerWidth/2}, ${height-padding})`)
         const yLabel = svg.append("g")
-                        .attr("transform", `translate(${padding}, ${height/2})`)
+                        .attr("transform", `translate(${padding}, ${height/2+innerHeight/3})`)
             yLabel.append("text")
                     .text(yAxisLabel)
                     .attr("transform", `rotate(-90)`)
