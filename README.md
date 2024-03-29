@@ -2,6 +2,8 @@
 
 Data is scraped from https://www.enforcementtracker.com/
 
+![Alt text](image.png)
+
 creating the table in the db
 ```
 create table clean_gdpr (
