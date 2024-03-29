@@ -1,5 +1,17 @@
 # gdpr-enforcement-analytics
 
+
+## Technologies used
+
+1. Python (backend)
+2. Javascript (frontend)
+3. fastapi
+4. selenium
+5. postgresql
+6. reactjs
+7. d3js
+8. tailwindcss
+
 Data is scraped from https://www.enforcementtracker.com/
 
 ![Alt text](image.png)
