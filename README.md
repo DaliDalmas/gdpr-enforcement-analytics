@@ -39,6 +39,7 @@ Data is scraped from https://www.enforcementtracker.com/
 2. run `npm install`
 3. run `npm start` 
 
+# database
 creating the table in the db
 ```
 create table clean_gdpr (
