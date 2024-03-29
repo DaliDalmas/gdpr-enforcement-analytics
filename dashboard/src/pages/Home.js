@@ -1,5 +1,6 @@
 import TimeSeries from "../components/TimeSeries"
 import CircleChart from "../components/CircleChart"
+import BarChart from "../components/BarChart"
 export default function Home({ data }) {
     // timeseries
     let timeSeriesData = {}
@@ -43,7 +44,23 @@ export default function Home({ data }) {
         return cumm
     }, countryFines)
 
-    
+    // bar chart
+    var fineTypes = {}
+    data.reduce((cum, cur)=>{
+        const fine = cur['fine']
+        const fineType = cur['fineType']
+        if(!fineTypes[fineType]){
+            cum[fineType] = fine
+        }else{
+            cum[fineType] = cum[fineType] + fine 
+        }
+        return cum
+    }, fineTypes)
+
+    fineTypes = Object.keys(fineTypes).map(key=>{
+        return {label:key, value:fineTypes[key]}
+    })
+
     return (
         <div>
             <TimeSeries
@@ -69,6 +86,13 @@ export default function Home({ data }) {
                 })}
             width = {1000}
             height={400}
+            />
+            <br />
+            <BarChart 
+             data = {fineTypes}
+             width = {1000}
+             height={400}
+             title="sum of GDPR fines by fine type"
             />
             <br />
         </div>

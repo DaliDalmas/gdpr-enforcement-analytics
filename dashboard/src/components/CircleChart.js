@@ -1,6 +1,7 @@
 import * as d3 from 'd3'
 import { useRef, useEffect } from "react"
 export default function CircleChart({data, width, height}){
+    data.sort((a,b)=>a.value-b.value)
     const svgRef = useRef()
     useEffect(()=>{
         const svg = d3.select(svgRef.current)
@@ -23,14 +24,13 @@ export default function CircleChart({data, width, height}){
                 .attr('class', 'country')
                 .attr('transform', (d,i)=>`translate(${i*(innerWidth/data.length)}, ${innerHeight/2})`)
                 .each(function(datum,index){
-                    console.log(datum)
                     d3.select(this)
                         .append('circle')
                         .attr('r', radiusScale(datum.value))
                         .attr('cx', 0)
                         .attr('cy', 0)
-                        .style('fill', 'black')
-                        .style('stroke', 'black')
+                        .style('fill', 'pink')
+                        .style('stroke', 'purple')
                     d3.select(this)
                         .append('text')
                         .text(datum.label)

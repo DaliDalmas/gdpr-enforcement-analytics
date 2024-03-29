@@ -35,7 +35,6 @@ function App() {
   }, [])
   return (
     <div className="App">
-
       {data? <Home data={data}/>: <></>}
     </div>
   );
