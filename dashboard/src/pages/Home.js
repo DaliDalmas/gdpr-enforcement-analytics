@@ -63,7 +63,7 @@ export default function Home({ data }) {
 
     return (
         <div className="flex flex-col justify-center items-center">
-            <div className="flex flex-row justify-center items-center  space-x-10">
+            <div className="flex flex-row justify-center items-center space-x-10">
                 <TimeSeries
                     data={timeSeriesdata2}
                     width={500}
